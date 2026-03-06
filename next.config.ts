@@ -1,4 +1,8 @@
 import type { NextConfig } from "next";
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const projectRoot = dirname(fileURLToPath(import.meta.url));
 
 const csp = [
   "default-src 'self'",
@@ -14,6 +18,9 @@ const csp = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  turbopack: {
+    root: projectRoot,
+  },
   images: {
     remotePatterns: [{ protocol: "https", hostname: "**.supabase.co" }],
   },
