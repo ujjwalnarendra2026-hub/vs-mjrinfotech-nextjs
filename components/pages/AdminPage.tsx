@@ -8,7 +8,6 @@ import {
 } from "lucide-react";
 
 const SESSION_KEY = "admin_token_v2";
-const SUPABASE_PROJECT_ID = process.env.NEXT_PUBLIC_SUPABASE_PROJECT_ID ?? "";
 
 type InvokeResult = {
   data: any;
