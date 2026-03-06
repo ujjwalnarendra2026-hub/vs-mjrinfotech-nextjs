@@ -1,0 +1,269 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 20% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 20%;
+
+    --primary: 110 68% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 110 80% 95%;
+    --secondary-foreground: 110 68% 30%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 110 80% 95%;
+    --accent-foreground: 110 68% 30%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 110 68% 38%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    font-family: var(--font-body), sans-serif;
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), sans-serif;
+  }
+}
+
+@layer components {
+  /* ===== Layout ===== */
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  /* ===== Hero Section - Green Slide ===== */
+  .hero-section-bg-green {
+    background: linear-gradient(135deg, hsl(110, 68%, 42%) 0%, hsl(130, 55%, 35%) 50%, hsl(110, 68%, 30%) 100%);
+  }
+
+  .hero-title-green {
+    color: hsl(220, 20%, 20%);
+  }
+
+  .hero-title-accent-green {
+    color: hsl(110, 68%, 38%);
+  }
+
+  .hero-desc-green {
+    color: hsl(215, 16%, 47%);
+  }
+
+  @media (min-width: 1024px) {
+    .hero-title-green {
+      color: hsl(0, 0%, 100%);
+    }
+    .hero-title-accent-green {
+      color: hsla(0, 0%, 100%, 0.9);
+    }
+    .hero-desc-green {
+      color: hsla(0, 0%, 100%, 0.8);
+    }
+  }
+
+  /* ===== Hero Section - White Slide ===== */
+  .hero-section-bg-white {
+    background: radial-gradient(ellipse at 50% 50%, hsl(200, 40%, 96%) 0%, hsl(0, 0%, 100%) 70%);
+  }
+
+  /* ===== Section Titles ===== */
+  .section-title-badge {
+    @apply inline-block text-sm font-semibold tracking-wider uppercase text-primary mb-2;
+  }
+
+  .section-heading {
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight;
+    font-family: var(--font-heading), sans-serif;
+  }
+
+  /* ===== Service Cards ===== */
+  .service-card {
+    @apply bg-card rounded-lg p-8 shadow-md transition-all duration-300 border border-border;
+  }
+
+  .service-card:hover {
+    @apply border-primary shadow-xl;
+    transform: translateY(-5px);
+  }
+
+  /* ===== Why Choose Cards ===== */
+  .choose-card {
+    @apply relative overflow-hidden rounded-lg cursor-pointer;
+  }
+
+  .choose-card:hover .choose-card-overlay {
+    @apply opacity-100;
+  }
+
+  .choose-card:hover .choose-card-title {
+    @apply opacity-0;
+  }
+
+  .choose-card-overlay {
+    @apply absolute inset-0 flex items-center justify-center p-6 opacity-0 transition-opacity duration-300;
+    background-color: hsla(110, 68%, 38%, 0.92);
+  }
+
+  .choose-card-title {
+    @apply absolute bottom-0 left-0 right-0 px-4 py-3 transition-opacity duration-300;
+    background-color: hsla(110, 68%, 38%, 0.85);
+  }
+
+  /* ===== Buttons ===== */
+  .btn-primary-custom {
+    @apply inline-block bg-primary text-primary-foreground px-8 py-3 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300;
+    font-family: var(--font-heading), sans-serif;
+  }
+
+  .btn-primary-custom:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .btn-outline-custom {
+    @apply inline-block px-8 py-3 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300;
+    border: 2px solid hsl(var(--primary));
+    color: hsl(var(--primary));
+    font-family: var(--font-heading), sans-serif;
+  }
+
+  .btn-outline-custom:hover {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  .btn-outline-light {
+    @apply inline-block px-8 py-3 rounded-md font-semibold text-sm uppercase tracking-wider transition-all duration-300;
+    border: 2px solid hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 100%);
+    font-family: var(--font-heading), sans-serif;
+  }
+
+  .btn-outline-light:hover {
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(110, 68%, 38%);
+  }
+
+  /* ===== Links ===== */
+  .read-more-link {
+    @apply inline-flex items-center gap-1 text-primary font-semibold text-sm transition-all duration-300;
+  }
+
+  .read-more-link:hover {
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    @apply font-medium text-sm transition-colors duration-200;
+    font-family: var(--font-heading), sans-serif;
+    font-weight: 600;
+  }
+
+  .nav-link:hover {
+    @apply text-primary;
+  }
+
+  /* ===== Client Logos ===== */
+  .partner-logo {
+    @apply transition-all duration-300;
+    filter: grayscale(100%);
+    opacity: 0.7;
+  }
+
+  .partner-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  /* ===== Page Banner ===== */
+  .page-banner-bg {
+    background: linear-gradient(135deg, hsl(210, 20%, 97%) 0%, hsl(110, 40%, 97%) 100%);
+  }
+
+  /* ===== Contact Form ===== */
+  .contact-input {
+    @apply w-full px-5 py-3 rounded-full border border-border bg-background text-foreground text-sm transition-all duration-200;
+    outline: none;
+  }
+
+  .contact-input:focus {
+    border-color: hsl(110, 68%, 38%);
+    box-shadow: 0 0 0 3px hsla(110, 68%, 38%, 0.1);
+  }
+
+  textarea.contact-input {
+    @apply rounded-2xl;
+  }
+
+  /* ===== About Text Cards ===== */
+  .about-text-card {
+    @apply border-t-4 border-primary pt-6;
+  }
+
+  /* ===== Decorative ===== */
+  .floating-shape {
+    @apply absolute pointer-events-none;
+    opacity: 0.1;
+  }
+
+  /* ===== Float Animation ===== */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  /* ===== Marquee Animation ===== */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 25s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+}
